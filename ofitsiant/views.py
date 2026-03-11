@@ -1,9 +1,14 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Category, Taomlar
+from .serializers import TaomlarSerializer, CategorySerializer
+from rest_framework import viewsets
 
-# Create your views here.
-def home(request):
-    return HttpResponse("user ishlayabdi")
+class TaomlarViewSet(viewsets.ModelViewSet):
+    queryset = Taomlar.objects.all()
+    serializer_class = TaomlarSerializer
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
 
 
-# Create your views here.
+

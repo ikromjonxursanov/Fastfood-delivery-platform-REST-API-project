@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     #tashqi app
     'rest_framework',
+    'django_extensions',
 
     #ichki app
     'user',

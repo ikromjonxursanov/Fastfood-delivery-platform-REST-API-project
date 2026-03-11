@@ -5,7 +5,7 @@ class Taomlar(models.Model):
     name = models.CharField(max_length=100, blank=False, null=False)
     description = models.TextField(max_length=200, blank=True, null=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
-    praparation_time = models.BooleanField(default=True)
+    preparation_time = models.BooleanField(default=True)
     image = models.ImageField(default=True)
     is_available = models.BooleanField(default=True)
     quantity = models. FloatField()
