@@ -1,6 +1,11 @@
 from django.urls import path
-from .views import *
+from .views import PostViewSet
+from rest_framework.routers import SimpleRouter
 
 urlpatterns = [
-    path("", home),
+
 ]
+
+router = SimpleRouter()
+router.register(r"post", PostViewSet, basename="post")
+urlpatterns += router.urls
