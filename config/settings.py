@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     #tashqi app
     'rest_framework',
     'django_extensions',
+    'rest_framework_simplejwt',
+    'corsheaders',
+
 
     #ichki app
     'user',
@@ -48,6 +51,34 @@ INSTALLED_APPS = [
     'orders',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+                                        ],
+                }
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True,
+
+}
+
+
+CORS_ALLOWED_ORIGINS=[
+     "http://localhost:8000",
+     "http://localhost:3000",
+
+
+]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
