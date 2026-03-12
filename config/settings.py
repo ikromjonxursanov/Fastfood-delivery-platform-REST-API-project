@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'rest_framework_simplejwt',
     'corsheaders',
+    'drf_yasg',
 
 
     #ichki app
