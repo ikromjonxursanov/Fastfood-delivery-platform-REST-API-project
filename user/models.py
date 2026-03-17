@@ -12,7 +12,7 @@ class Profile(models.Model):
                    ]
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='istemolchi')
-    phone_number = models.CharField(max_length=13, unique=True, validators=[phone_validator])
+    phone_number = models.CharField(max_length=13, unique=False, validators=[phone_validator])
     address = models.CharField(max_length=200, blank=False, null=False)
     is_active = models.BooleanField(max_length=200, blank=False, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
