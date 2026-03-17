@@ -1,10 +1,14 @@
-from .models import Post
-from .serializers import PostSerializer
-from rest_framework import viewsets
-from .permissions import IsAuthenticatedOrReadOnlyForOrder
+from .models import Profile
+from .serializers import ProfileSerializer
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 
-class PostViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticatedOrReadOnlyForOrder]
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
+class ProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        profile = request.user.profile
+        serializer = ProfileSerializer(profile)
+        return Response(serializer.data)

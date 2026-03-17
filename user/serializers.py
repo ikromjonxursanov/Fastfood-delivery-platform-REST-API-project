@@ -1,7 +1,8 @@
-from .models import Post
+from .models import Profile
 from rest_framework.serializers import ModelSerializer
-class PostSerializer(ModelSerializer):
+class ProfileSerializer(ModelSerializer):
     class Meta:
-        model = Post
-        fields = "__all__"
+        model = Profile
+        fields = ['user', 'role', 'created_at']
+
 
