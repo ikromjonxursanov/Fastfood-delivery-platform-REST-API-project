@@ -27,9 +27,10 @@ class Order(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        tayyorlash_vaqti = 0
+        taomlar_soni = 0
         for item in self.items.all():
-            tayyorlash_vaqti += ceil(item.quantity / 4) * item.taom.preparation_time
+            taomlar_soni += item.quantity
+        tayyorlash_vaqti = ceil(taomlar_soni / 4) * 5
         yetkazib_berish_vaqti = 15
         self.estimated_delivery_time = self.created_at + timedelta(minutes = tayyorlash_vaqti + yetkazib_berish_vaqti)
         super().save(update_fields=["estimated_delivery_time"])
