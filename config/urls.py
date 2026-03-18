@@ -33,3 +33,14 @@ urlpatterns += [
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+
+
+# config/urls.py
+# from django.urls import path, include
+#
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('api/user/', include('user.urls')),
+#     path('api/ofitsiant/', include('ofitsiant.urls')),
+#     path('api/orders/', include('orders.urls')),
+# ]

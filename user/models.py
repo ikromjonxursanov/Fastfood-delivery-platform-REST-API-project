@@ -10,7 +10,7 @@ class Profile(models.Model):
                    ('Istemolchi', 'Istemolchi'),
                    ('Ofitsiant', 'Ofitsiant')
                    ]
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=False)
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='istemolchi')
     phone_number = models.CharField(max_length=13, unique=False, validators=[phone_validator])
     address = models.CharField(max_length=200, blank=False, null=False)
