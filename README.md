@@ -26,7 +26,7 @@ FastFood Delivery API is a RESTful service designed for restaurants to manage me
 
 ## Installation
 
-```bash
+```zsh
 git clone https://github.com/ikromjonxursanov/Fastfood-delivery-platform-REST-API-project.git
 cd Fastfood-delivery-platform-REST-API-project
 python -m venv venv

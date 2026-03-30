@@ -1,4 +1,4 @@
-# from rest_framework.test import APITestCase
+from rest_framework.test import APITestCase
 # from django.contrib.auth.models import User
 # from orders.models import Order, OrderItem
 # from ofitsiant.models.taomlar import Taomlar

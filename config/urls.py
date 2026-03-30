@@ -10,10 +10,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('user/', include('user.urls')),
-    path('ofitsiant/', include('ofitsiant.urls')),
-    path('orders/', include('orders.urls')),
+path('admin/', admin.site.urls),
+    path('api/user/', include('user.urls')),
+    path('api/ofitsiant/', include('ofitsiant.urls')),
+    path('api/orders/', include('orders.urls')),
 ]
 
 schema_view = get_schema_view(
@@ -34,13 +34,3 @@ urlpatterns += [
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
-
-# config/urls.py
-# from django.urls import path, include
-#
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-#     path('api/user/', include('user.urls')),
-#     path('api/ofitsiant/', include('ofitsiant.urls')),
-#     path('api/orders/', include('orders.urls')),
-# ]
