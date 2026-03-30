@@ -14,7 +14,7 @@ class Profile(models.Model):
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='istemolchi')
     phone_number = models.CharField(max_length=9, unique=False, validators=[phone_validator])
     address = models.CharField(max_length=200, blank=False, null=False)
-    is_active = models.BooleanField(max_length=200, blank=False, null=True)
+    is_active = models.BooleanField()
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
