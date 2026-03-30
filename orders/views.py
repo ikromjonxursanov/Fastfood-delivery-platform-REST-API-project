@@ -26,10 +26,10 @@ class OrderItemViewSet(viewsets.ModelViewSet):
         if user.is_staff:
             return Order.objects.all()
 
-        return Order.Item.objects.filter(user=user)
+        return OrderItem.objects.filter(user=user)
 
     def perform_create(self, serializer):
         order = serializer.validated_data.get("order")
-        if order.user != self.reuqest.user and not self.request.user.is_stuff:
+        if order.user != self.request.user and not self.request.user.is_stuff:
             raise PermissionDenied("Bu order sizga tegishlimas")
         serializer.save()
