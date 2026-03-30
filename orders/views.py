@@ -24,7 +24,7 @@ class OrderItemViewSet(viewsets.ModelViewSet):
         user = self.request.user
 
         if user.is_staff:
-            return Order.objects.all()
+            return OrderItem.objects.all()
 
         return OrderItem.objects.filter(user=user)
 
