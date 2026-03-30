@@ -11,7 +11,7 @@ class Profile(models.Model):
                    ('Ofitsiant', 'Ofitsiant')
                    ]
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=False)
-    role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='istemolchi')
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='Istemolchi')
     phone_number = models.CharField(max_length=9, unique=False, validators=[phone_validator])
     address = models.CharField(max_length=200, blank=False, null=False)
     is_active = models.BooleanField()

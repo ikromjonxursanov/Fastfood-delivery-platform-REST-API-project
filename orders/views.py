@@ -2,7 +2,7 @@ from .models import Order, OrderItem
 from .serializers import OrderSerializer, OrderItemSerializer
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-
+from rest_framework.exceptions import  PermissionDenied
 
 class OrderViewSet(viewsets.ModelViewSet):
     permission_classes = [  IsAuthenticatedOrReadOnly ]
@@ -26,7 +26,10 @@ class OrderItemViewSet(viewsets.ModelViewSet):
         if user.is_staff:
             return Order.objects.all()
 
-        return Order.objects.filter(user=user)
+        return Order.Item.objects.filter(user=user)
 
     def perform_create(self, serializer):
+        order = serializer.validated_data.get("order")
+        if order.user != self.reuqest.user and not self.request.user.is_stuff:
+            raise PermissionDenied("Bu order sizga tegishlimas")
         serializer.save()

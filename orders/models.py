@@ -8,13 +8,14 @@ from django.utils.timezone import now
 from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
 
+
 phone_validator = RegexValidator(regex=r"^\+998\d{9}$",
-                                 message="+998 dan boshlanib 9 ta raqamdan iborat bolishi kerak")
+                                 message="+998 dan boshlanib 13 ta belgidan iborat bolishi kerak")
 
 class Order(models.Model):
 
     user = models.ForeignKey(User, on_delete = models.CASCADE)
-    phone_number = models.CharField(max_length=13, unique=False, validators=[phone_validator], null=False)
+    phone_number = models.CharField(max_length=9, unique=False, validators=[phone_validator], null=False)
     delivery_address = models.TextField(max_length=250, blank=False, null=False)
     total_price = models.DecimalField(max_digits=15, decimal_places=2)
     estimated_delivery_time = models.DateTimeField()
