@@ -7,9 +7,7 @@ class UserSerializer(ModelSerializer):
         model = User
         fields = "__all__"
 
-    def create(self, validated_data):
-        validated_data['user'] = self.context['request'].user
-        return super().create(validated_data)
+
 class OrderSerializer(ModelSerializer):
     class Meta:
         model = Order
