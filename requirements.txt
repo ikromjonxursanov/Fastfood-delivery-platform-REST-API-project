@@ -24,3 +24,4 @@ setuptools==80.9.0
 sqlparse==0.5.5
 uritemplate==4.2.0
 virtualenv==20.35.4
+psycopg2-binary
