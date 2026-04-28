@@ -1,11 +1,15 @@
 from rest_framework.serializers import ModelSerializer
 from .models import Order, OrderItem
-from django.contrib.auth.models import User
+from django.contrib.auth.models import Order
 
 class UserSerializer(ModelSerializer):
     class Meta:
-        model = User
+        model = Order
         fields = "__all__"
+
+    def create(self, validated_data):
+        validated_data['user'] = self.context['request'].user
+        return super().create(validated_data)
 
 class OrderSerializer(ModelSerializer):
     class Meta:
