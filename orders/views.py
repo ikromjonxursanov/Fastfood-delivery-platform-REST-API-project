@@ -1,11 +1,11 @@
 from .models import Order, OrderItem
 from .serializers import OrderSerializer, OrderItemSerializer
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import  PermissionDenied
 
 class OrderViewSet(viewsets.ModelViewSet):
-    permission_classes = [  IsAuthenticatedOrReadOnly ]
+    permission_classes = [IsAuthenticated]
     serializer_class = OrderSerializer
 
     def get_queryset(self):
@@ -17,7 +17,7 @@ class OrderViewSet(viewsets.ModelViewSet):
         return Order.objects.filter(user=user)
 
 class OrderItemViewSet(viewsets.ModelViewSet):
-    permission_classes = [ IsAuthenticatedOrReadOnly]
+    permission_classes = [ IsAuthenticated]
     serializer_class = OrderItemSerializer
 
     def get_queryset(self):
@@ -30,6 +30,7 @@ class OrderItemViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         order = serializer.validated_data.get("order")
+
         if order.user != self.request.user and not self.request.user.is_staff:
             raise PermissionDenied("Bu order sizga tegishlimas")
         serializer.save()
