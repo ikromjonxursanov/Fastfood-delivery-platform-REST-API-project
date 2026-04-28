@@ -25,7 +25,9 @@ services:
     ports:
       - "80:80"
     volumes:
+      - .:/app
       - ./media:/app/media
+      - ./static:/app/static
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - web
